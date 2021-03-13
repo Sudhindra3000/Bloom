@@ -11,11 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
-import androidx.navigation.compose.rememberNavController
 import com.sudhindra.bloom.R
 import com.sudhindra.bloom.ui.components.SecondaryButton
 
@@ -23,49 +23,57 @@ import com.sudhindra.bloom.ui.components.SecondaryButton
 fun Welcome(
     navController: NavHostController
 ) {
-    Column(
-        Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Box(modifier = Modifier.fillMaxSize()) {
         Image(
-            modifier = Modifier.padding(top = 72.dp, start = 88.dp),
-            painter = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_welcome_illos else R.drawable.ic_light_welcome_illos),
-            contentDescription = ""
+            modifier = Modifier.fillMaxSize(),
+            painter = painterResource(if (isSystemInDarkTheme()) R.drawable.ic_dark_welcome_bg else R.drawable.ic_light_welcome_bg),
+            contentDescription = "",
+            contentScale = ContentScale.Crop
         )
-
-        Image(
-            modifier = Modifier.padding(top = 48.dp),
-            painter = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_logo else R.drawable.ic_light_logo),
-            contentDescription = "Logo"
-        )
-        Text(
-            modifier = Modifier.paddingFromBaseline(top = 32.dp),
-            text = "Beautiful Home Garden Solutions",
-            style = MaterialTheme.typography.caption
-        )
-
-        SecondaryButton(
-            modifier = Modifier
-                .padding(top = 40.dp)
-                .fillMaxWidth(0.9f),
-            onClick = {}
+        Column(
+            Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Create account")
-        }
+            Image(
+                modifier = Modifier.padding(top = 72.dp, start = 88.dp),
+                painter = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_welcome_illos else R.drawable.ic_light_welcome_illos),
+                contentDescription = ""
+            )
 
-        TextButton(
-            modifier = Modifier
-                .padding(top = 8.dp)
-                .fillMaxWidth(0.9f)
-                .height(48.dp),
-            onClick = { navController.navigate("logIn") },
-            colors = ButtonDefaults.textButtonColors(
-                contentColor = if (isSystemInDarkTheme()) Color.White else MaterialTheme.colors.secondary
-            ),
-            shape = MaterialTheme.shapes.medium
-        ) {
-            Text(text = "Log in")
+            Image(
+                modifier = Modifier.padding(top = 48.dp),
+                painter = painterResource(id = if (isSystemInDarkTheme()) R.drawable.ic_dark_logo else R.drawable.ic_light_logo),
+                contentDescription = "Logo"
+            )
+            Text(
+                modifier = Modifier.paddingFromBaseline(top = 32.dp),
+                text = "Beautiful Home Garden Solutions",
+                style = MaterialTheme.typography.caption
+            )
+
+            SecondaryButton(
+                modifier = Modifier
+                    .padding(top = 40.dp)
+                    .fillMaxWidth(0.9f),
+                onClick = {}
+            ) {
+                Text(text = "Create account")
+            }
+
+            TextButton(
+                modifier = Modifier
+                    .padding(top = 8.dp)
+                    .fillMaxWidth(0.9f)
+                    .height(48.dp),
+                onClick = { navController.navigate("logIn") },
+                colors = ButtonDefaults.textButtonColors(
+                    contentColor = if (isSystemInDarkTheme()) Color.White else MaterialTheme.colors.secondary
+                ),
+                shape = MaterialTheme.shapes.medium
+            ) {
+                Text(text = "Log in")
+            }
         }
     }
 }
