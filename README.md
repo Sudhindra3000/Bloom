@@ -4,6 +4,7 @@ This app was made as a part of [#AndroidDevChallenge](https://android-developers
 ## Made with
 * [Jetpack Compose](https://developer.android.com/jetpack/compose/)
 * [Compose Navigation](https://developer.android.com/jetpack/compose/navigation)
+* [Accompanist](https://github.com/google/accompanist)
 
 ## 🌙 Dark Mode
 ||||
